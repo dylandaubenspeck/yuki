@@ -1,0 +1,85 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id    String @id @default(cuid())
+  email String @unique
+
+  discordId String?
+  username  String?
+
+  name      String
+  role      Role     @default(USER)
+  avatar    String?
+  password  String?
+  createdAt DateTime @default(now())
+
+  sessions Session[]
+  products Product[]
+  comments Comment[]
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+
+  user   User   @relation(references: [id], fields: [userId], onDelete: Cascade)
+  userId String
+
+  @@index([userId])
+}
+
+model Category {
+  id       String    @id @default(cuid())
+  name     String
+  image    String
+  products Product[]
+}
+
+model Product {
+  id          String    @id @default(cuid())
+  name        String
+  description String
+  image       String
+  price       Int
+  stock       Int
+  comments    Comment[]
+  createdAt   DateTime  @default(now())
+
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  categoryId String
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
+}
+
+model Comment {
+  id         String   @id @default(cuid())
+  evaluation Int
+  content    String
+  createdAt  DateTime @default(now())
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
+
+  products  Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId String
+}

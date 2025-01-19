@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "default",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "../../tooling/tailwind/web.ts",
+    "css": "src/tailwind.css",
+    "baseColor": "neutral",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "aliases": {
+    "components": "@yuki/ui",
+    "utils": "@yuki/ui",
+    "ui": "@yuki/ui/ui",
+    "lib": "@yuki/ui",
+    "hooks": "@yuki/ui/hooks"
+  },
+  "iconLibrary": "lucide"
+}
