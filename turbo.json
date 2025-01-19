@@ -1,30 +1,23 @@
 {
-  "$schema": "https://turborepo.org/schema.json",
-  "ui": "tui",
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [".env"],
+  "globalEnv": ["NODE_ENV", "CI"],
   "tasks": {
-    "topo": { "dependsOn": ["^topo"] },
     "build": {
-      "dependsOn": ["^db:generate", "^build"],
-      "outputs": [".cache/tsbuildinfo.json", "dist/**"]
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
-    "dev": { "dependsOn": ["^dev"], "cache": false, "persistent": false },
-    "format": { "outputs": [".cache/.prettiercache"], "outputLogs": "new-only" },
-    "lint": { "dependsOn": ["^topo", "^build"], "outputs": [".cache/.eslintcache"] },
-    "typecheck": { "dependsOn": ["^topo", "^build"], "outputs": [".cache/tsbuildinfo.json"] },
-    "clean": { "cache": false },
-    "//#clean": { "cache": false },
-    "push": { "cache": false, "interactive": true },
-    "studio": { "cache": false, "persistent": true },
-    "db:generate": { "cache": false, "persistent": false },
-    "ui-add": { "cache": false, "interactive": true }
-  },
-  "globalEnv": ["DATABASE_URL", "DISCORD_CLIENT_ID", "DISCORD_CLIENT_SECRET", "RESEND_KEY", "PORT"],
-  "globalPassThroughEnv": [
-    "NODE_ENV",
-    "CI",
-    "VERCEL",
-    "VERCEL_ENV",
-    "VERCEL_URL",
-    "npm_lifecycle_event"
-  ]
+    "clean": {
+      "cache": false
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "env": ["PORT", "NODE_ENV"]
+    },
+    "typecheck": {
+      "dependsOn": ["^topo", "^build"],
+      "outputs": []
+    }
+  }
 }

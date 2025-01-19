@@ -7,8 +7,6 @@
     "build": "bun with-env next build",
     "clean": "git clean -xdf .cache .next .turbo node_modules",
     "dev": "bun with-env next dev -p 3000 --turbopack",
-    "format": "prettier --check . --ignore-path ../../.gitignore",
-    "lint": "eslint",
     "start": "bun with-env next start -p 3000",
     "typecheck": "tsc --noEmit",
     "with-env": "dotenv -e ../../.env --"
@@ -31,15 +29,10 @@
     "@types/node": "^22.10.2",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
-    "@yuki/eslint-config": "workspace:*",
-    "@yuki/prettier-config": "workspace:*",
     "@yuki/tailwind-config": "workspace:*",
     "@yuki/tsconfig": "workspace:*",
     "dotenv-cli": "^8.0.0",
-    "eslint": "latest",
-    "prettier": "latest",
     "tailwindcss": "^3.4.17",
     "typescript": "latest"
   },
-  "prettier": "@yuki/prettier-config"
 }

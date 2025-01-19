@@ -24,10 +24,8 @@
     "build": "tsc",
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "dev": "tsc --watch",
-    "format": "prettier --check . --ignore-path ../../.gitignore",
-    "lint": "eslint",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
-    "ui-add": "bunx --bun shadcn@latest add && prettier src --write --list-different"
+    "ui-add": "bunx --bun shadcn@latest add"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.2",
@@ -47,12 +45,7 @@
   },
   "devDependencies": {
     "@types/react": "^19.0.2",
-    "@yuki/eslint-config": "workspace:*",
-    "@yuki/prettier-config": "workspace:*",
     "@yuki/tsconfig": "workspace:*",
-    "eslint": "latest",
-    "prettier": "latest",
     "typescript": "latest"
   },
-  "prettier": "@yuki/prettier-config"
 }

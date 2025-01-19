@@ -15,8 +15,6 @@
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "db:generate": "bun with-env prisma generate",
     "dev": "tsc",
-    "format": "prettier --check . --ignore-path ../../.gitignore",
-    "lint": "eslint",
     "push": "bun with-env prisma db push",
     "studio": "bun with-env prisma studio",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
@@ -32,15 +30,10 @@
   },
   "devDependencies": {
     "@types/ws": "^8.5.13",
-    "@yuki/eslint-config": "workspace:*",
-    "@yuki/prettier-config": "workspace:*",
     "@yuki/tsconfig": "workspace:*",
     "bufferutil": "^4.0.9",
     "dotenv-cli": "^8.0.0",
-    "eslint": "latest",
-    "prettier": "latest",
     "prisma": "^6.1.0",
     "typescript": "latest"
   },
-  "prettier": "@yuki/prettier-config"
 }

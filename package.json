@@ -15,19 +15,11 @@
     "db:push": "turbo -F @yuki/db push",
     "db:studio": "turbo -F @yuki/db studio",
     "dev": "turbo watch dev --continue",
-    "format": "turbo run format --continue -- --cache --cache-location .cache/.prettiercache",
-    "format:fix": "turbo run format --continue -- --write --cache --cache-location .cache/.prettiercache",
-    "postinstall": "pnpm lint:ws",
-    "lint": "turbo run lint --continue -- --cache --cache-location .cache/.eslintcache",
-    "lint:fix": "turbo run lint --continue -- --fix --cache --cache-location .cache/.eslintcache",
-    "lint:ws": "npx sherif@latest",
     "typecheck": "turbo run typecheck",
     "ui-add": "turbo run ui-add"
   },
   "devDependencies": {
     "@turbo/gen": "^2.3.3",
-    "@yuki/prettier-config": "workspace:*",
-    "prettier": "latest",
     "turbo": "^2.3.3",
     "typescript": "latest"
   },
@@ -35,5 +27,4 @@
   "engines": {
     "node": ">=22.18.1"
   },
-  "prettier": "@yuki/prettier-config"
 }
